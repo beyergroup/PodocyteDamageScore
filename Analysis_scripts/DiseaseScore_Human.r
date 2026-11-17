@@ -17,7 +17,7 @@ mallinfo::malloc.trim()
 gc()
 
 #### load DS ####
-# setwd("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/Development_Validation/HumanValidation")
+# setwd("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Human")
 # calculate damage score
 source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/AUCell_script.r")
 source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
@@ -28,7 +28,7 @@ source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
   tx2gene_human <- getBM(attributes=c('ensembl_gene_id', 'external_gene_name',"entrezgene_id"),  mart = ensembl_human)
 
   # load damage signatures
-  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/DamageSignatures/DS_all.20.09.2023.tsv")
+  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
   # convert gene names to human orthologs
   DS.HOMO <-  fun_homoTO.FROMmouse( gns = DS_all$gene_symbol, TO = F)
   DS_all.HOMO <-  DS_all
@@ -726,7 +726,7 @@ source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
        toPlot <- cbind(toPlot, KPMP.annotation.contn[
          match( toPlot$partID ,KPMP.annotation.contn$Participant.ID),
          -c(7, 10:13)])
-       saveRDS( toPlot , "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/Development_Validation/HumanValidation/KPMP.all_scsnRNAseq_podo.PDS.aggregated.rda")
+       saveRDS( toPlot , "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Human/KPMP.all_scsnRNAseq_podo.PDS.aggregated.rda")
        
        ### remove samples with fewer than 3 cells
        X <- table( KPMP.scsnRNAseq_podo.Seur$partIDsnsc)
@@ -787,7 +787,7 @@ source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
     ### correlation with clinical features
       {
     library(corrplot)
-        toPlot.filt <-readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/Development_Validation/HumanValidation/KPMP.CKD.AKI_scsnRNAseq_podo.PDS.aggregated.rda")
+        toPlot.filt <-readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Human/KPMP.CKD.AKI_scsnRNAseq_podo.PDS.aggregated.rda")
         
     ### all traits
     {         
@@ -942,7 +942,7 @@ source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
 #### save dotplots plots for multiple studies   ####
   gg <- cowplot::plot_grid( gg1, gg2 , gg3 , align = "h" , nrow = 1)
   # save the plot
-  pdf(height = 8, width = 16, file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/Development_Validation/HumanValidation/PDS.42_Human.podo.jitter.v3.pdf")
+  pdf(height = 8, width = 16, file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Human/PDS.42_Human.podo.jitter.v3.pdf")
   print(gg )
   dev.off()
 

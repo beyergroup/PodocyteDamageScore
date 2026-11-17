@@ -102,12 +102,12 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
   } ) )
   colnames(allPodoGenes_mean) <- names(listSCSN)
   
-  saveRDS(allPodoGenes.uni, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDS_pseudotime/SCSN_allPodoGenes.uni.rda")
+  saveRDS(allPodoGenes.uni, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.uni.rda")
   
-  saveRDS(allPodoGenes, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDS_pseudotime/SCSN_allPodoGenes.rda")
-  saveRDS(allPodoGenes_mean, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDS_pseudotime/SCSN_allPodoGenes_mean.rda")
+  saveRDS(allPodoGenes, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+  saveRDS(allPodoGenes_mean, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes_mean.rda")
   
-  write.table(allPodoGenes_mean, sep = "\t", quote = F, col.names = NA, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDS_pseudotime/SCSN_allPodoGenes_mean.tsv")
+  write.table(allPodoGenes_mean, sep = "\t", quote = F, col.names = NA, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes_mean.tsv")
 }
 
 ### downsample to 1 K per study
@@ -141,7 +141,7 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
   # SCSN_PDSlist_1K[[6]] <- merge(SCSN_PDSlist_1K[[6]], subset( SCSN_PDSlist_1K[[7]], subset= gtypeDE=="control"))
   
   
-  saveRDS( listSCSN_1K , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/listSCSN_1K.22.12.23.rda")
+  saveRDS( listSCSN_1K , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN_1K.22.12.23.rda")
   
   #### calculate PDS
   {
@@ -173,7 +173,7 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
                                      add.cell.ids=  names(listSCSN_1K) )
     listSCSN_1K.PDS_merged$experiment <- sub("_.*","",colnames(listSCSN_1K.PDS_merged))
     
-    saveRDS( listSCSN_1K.PDS , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/listSCSN_1K.22.12.23.rda")
+    saveRDS( listSCSN_1K.PDS , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN_1K.22.12.23.rda")
     
     # plot
     VlnPlot( listSCSN_1K.PDS_merged, features = c("PDS","PDS.015" ,"PDS.03"), group.by = "experiment" , 
@@ -189,7 +189,7 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
 
   ### calculate PDS for podocytes
   # # load PDS signatures
-  # cv.lasso_listALL <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/Development_Validation/ML/cv.lasso_listALL.rda")
+  # cv.lasso_listALL <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/ML/cv.lasso_listALL.rda")
   # geneSS<- cv.lasso_listALL[c(2,7)]
   
   # dont subsample, only balance genotypes
@@ -220,7 +220,7 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
   # listSCSN.PDS[[6]] <- merge( listSCSN.PDS[[6]], subset( listSCSN.PDS[[7]],
   #                                                        subset=gtypeDE=="control"))
   ## save
-  saveRDS( listSCSN.PDS , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/listSCSN.PDSlist_29.09.2023.rda")
+  saveRDS( listSCSN.PDS , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN.PDSlist_29.09.2023.rda")
   
  
 
@@ -267,7 +267,7 @@ TFmouse_all <- unique( TFmouse_MAT$TF_Name)
     
   }))
   TF_MeanMed <- c(TF_MeanMed, "Zfp423")
-  saveRDS(TF_MeanMed, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDS_pseudotime/TFreg/TFA/TFs_SNSC.podo.MeanMed.08.01.24.rda")
+  saveRDS(TF_MeanMed, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/TFreg/TFA/TFs_SNSC.podo.MeanMed.08.01.24.rda")
 
   ### make a meme file with motifs 
   # read all meme mouse motifs
@@ -297,7 +297,7 @@ TFmouse_all <- unique( TFmouse_MAT$TF_Name)
 #                             method = "glmGamPoi" , 
 #                             residual.features = allPodoGenes )
 # 
-# saveRDS(listSCSN.PDS.sct , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/listSCSN.PDSlist.SCT_23.12.2022.rda" )
+# saveRDS(listSCSN.PDS.sct , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN.PDSlist.SCT_23.12.2022.rda" )
 
 # ### study correlation of mean counts with gene lvlvs
 #   {

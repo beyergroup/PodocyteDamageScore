@@ -12,7 +12,7 @@ mart  <- useEnsembl("ensembl",
 source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/extendGenes.coord_script.r")
 
 # PDS
-DS_all <- read.table(header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/tables/DSpodo_musTOhomo_oneTOone.tsv")
+DS_all <- read.table(header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/DSpodo_musTOhomo_oneTOone.tsv")
 
 #### prepare the data ####
 ### PDS
@@ -119,7 +119,7 @@ HDS42.GR.plus <- extendGenes( HDS42.GR,
 
 ### download variants for 42 PDS genes (querry terms) from https://www.ncbi.nlm.nih.gov/clinvar
 {
-  ClinVar.vars_PDS42 <- read.table( header = T, fill = T,  sep = "\t", "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/GWAS_PDS_genomic.variants/DS42_clinvar_result.txt")
+  ClinVar.vars_PDS42 <- read.table( header = T, fill = T,  sep = "\t", "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_GWAS.analysis/DS42_clinvar_result.txt")
   
   ClinVar.vars_PDS42_Kidney <- ClinVar.vars_PDS42[  grepl( 
     "Nephr|Glom|Kidney|Podo",ClinVar.vars_PDS42$Condition.s.,ignore.case = T),]
@@ -256,7 +256,7 @@ library(gwasrapidd)
       #### create extended ranges for all podo genes ####
       {
         ## all sc/snRNA-seq podocyte expressed genes
-        allPodoGenes <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/tables/SCSN_allPodoGenes.rda")
+        allPodoGenes <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/SCSN_allPodoGenes.rda")
         library(gprofiler2)
         PDSuniverse.h <- gorth(
           query   = allPodoGenes,

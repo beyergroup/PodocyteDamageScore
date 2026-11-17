@@ -468,7 +468,7 @@ PodoMarks.mouse <-  c( "Wt1", "Nphs1", "Nphs2", "Synpo","Robo2","Thsd7a","Nebl",
   source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/archive/scripts_PDS/AUCell_script.r")
   
   ##  load Damage signature
-  DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/DamageSignatures/DS_all.02.06.2022.tsv")
+  DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.02.06.2022.tsv")
   
   # load podocyte data
   sce.decontX_Podo <-  readRDS( "/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Single_cell/Public/GSE146912_PDSvalidation/Data/processed/Seurat/decontX.allcells_Seur_podo.rda"  )

@@ -13,7 +13,7 @@ source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/Sh
 source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/usefulRfunc.r")  
 
 # load damage signatures
-DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
 
 
 ### top 42 markers

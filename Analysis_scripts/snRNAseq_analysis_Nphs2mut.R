@@ -388,7 +388,7 @@ lldir <- list.dirs(  "/media/tim_nevelsk/WD_tim/PROJECTS/PODOCYTES/RNAseq/snRNAs
   # try NGCSC clustering 
   {
     
-    sce_subs <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/listSCSN.PDSlist_23.12.2022.rda")[[1]]
+    sce_subs <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN.PDSlist_23.12.2022.rda")[[1]]
     sce_subs$PDS.42.005 <- listSCSN.PDS[[1]]$PDS.42.005[ match( colnames(sce_subs) , colnames(listSCSN.PDS[[1]] ))]
     
     library(dplyr)
@@ -417,7 +417,7 @@ lldir <- list.dirs(  "/media/tim_nevelsk/WD_tim/PROJECTS/PODOCYTES/RNAseq/snRNAs
                            metadata_column_name = "Wt1", suggest_cut =T )
     
     sce_subs[["NGCS_clustering"]] <- NGCS_out$nodes_selected$cells_NonGlobalClustering$id 
-    saveRDS(sce_subs , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTES/disease.score/nphs2.Podo.NGCS.rda")
+    saveRDS(sce_subs , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/nphs2.Podo.NGCS.rda")
     NGCS::NGCS(sce_subs@meta.data, prefix = "RNA_snn",
                metadata_column_name = "PDS.42.005",suggest_cut = T, no_labels=T )
     
