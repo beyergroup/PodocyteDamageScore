@@ -23,7 +23,7 @@ tx2gene <- getBM( attributes=c('ensembl_gene_id', 'external_gene_name',"entrezge
 tx2prot <-  getBM( attributes=c("uniprotswissprot","uniprot_gn_id", 'external_gene_name',"mgi_symbol"),  mart = mart_mouse)
 #### load functions
 # generate damage signature
-source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/Universal_Damage_Signature_Tim_Paula_Version.R")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/archive/from_Output/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/Universal_Damage_Signature_Tim_Paula_Version.R")
 # calculate damage score
 source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/archive/scripts_PDS/AUCell_script.r")
 source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
