@@ -2355,7 +2355,7 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
     
     # save the object for shiny app
     # save( Alist , featureSelect , PDSmarkers42,
-    # file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/PDStrajectories_app/PDS_shiny.dataBig.RData" )
+    # file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/shiny_app/PDStrajectories_app/PDS_shiny.dataBig.RData" )
     
 }
 

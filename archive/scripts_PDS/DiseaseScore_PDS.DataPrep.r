@@ -59,7 +59,7 @@ DS_all <- read.table( header = T, "DS_all.20.09.2023.tsv")
     return(newSeu)
   })
   names(listSCSN )<- c("Nphs2","Wt1","Pdss2","Lmx1b","btbr","cd2ap","doxo","nephr.D1","nephr.D5")
-  saveRDS( listSCSN , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/SCSN_RNAseq/listSCSN.22.12.23.rda")
+  saveRDS( listSCSN , file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN.22.12.23.rda")
   
   }
 
