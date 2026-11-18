@@ -10,7 +10,8 @@ Code and gene lists for the Single-cell Damage Score manuscript (podocyte damage
 | `preprocessing/` | Preprocessing of public datasets, one script per dataset |
 | `Analysis_scripts/` | Analyses using the damage score |
 | `Figure_scripts/` | Figures of the manuscript, made from preprocessed data |
-| `archive/` | Older scripts kept for reference; some are still sourced by the analysis scripts (e.g. `archive/scripts_PDS/AUCell_script.r`) |
+| `lib/` | Shared functions sourced by the scripts, e.g. the damage score calculation |
+| `archive/` | Older scripts kept for reference; not needed to run the current code |
 
 ## gene_sets_and_tables
 
@@ -23,6 +24,15 @@ Code and gene lists for the Single-cell Damage Score manuscript (podocyte damage
 Scripts that turn raw public data into the objects used by the analysis scripts. Each script is named after the dataset accession.
 
 * `GSE146912.R` - preprocessing of the public mouse glomerular scRNAseq dataset GEO GSE146912, used for the damage score validation.
+
+Preprocessing of some datasets is part of the analysis scripts that use them:
+
+* spatial transcriptomics datasets GEO GSE171406, GSE182939 and GSE190094 - in `Analysis_scripts/DiseaseScore_spatial.r`;
+* human scRNAseq datasets GEO GSE140989 (NEPTUNE) and GSE176465 - in `Analysis_scripts/DiseaseScore_Human.r`.
+
+## lib
+
+* `AUCell_script.r` - functions for the damage score calculation (`DS_calc.func`), sourced by the analysis, figure and preprocessing scripts.
 
 ## Analysis_scripts
 
@@ -52,4 +62,4 @@ Scripts that make the main figures (`figures_scripts_fig1-4.r`) and supplementar
 
 ## Data and paths
 
-The scripts read input data from, and write results to, absolute paths on the Beyer lab file server (`/cellfile/DATASETS/...` for data, `/cellfile/PROJECTS/...` for results). Results are not stored in this repository. To run the code elsewhere, download the public datasets by their accessions and adjust the paths at the top of each script.
+The scripts read input data from, and write results to, absolute paths on the Beyer lab file server (`/cellfile/DATASETS/...` for data, `/cellfile/PROJECTS/...` for results). Each analysis script writes its results to a folder named after it (`Output/<script name>/`), preprocessing scripts to `Output/preprocessing/<accession>/`. Results are not stored in this repository. To run the code elsewhere, download the public datasets by their accessions and adjust the paths at the top of each script.
