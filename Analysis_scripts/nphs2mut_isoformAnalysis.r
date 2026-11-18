@@ -177,11 +177,11 @@ exampleSwitchListAnalyzed <- isoformSwitchTestSatuRn(
 p03 <- switchPlot( exampleSwitchListAnalyzed , gene = 'Pkm', 
             condition1= "mut", condition2 = "wt" )
 
-pdf(width = 8 , height = 8, file="/data/user/tpadvits/PROJECTS/PDS/Manuscript_submission/Nphs2mut.bulkRNAseq_Pklr.expr.TPM.boxplots.pdf" )
+pdf(width = 8 , height = 8, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/nphs2mut_isoformAnalysis/Nphs2mut.bulkRNAseq_Pklr.expr.TPM.boxplots.pdf" )
 p02
 dev.off()
 
-pdf(width = 8 , height = 8, file="/data/user/tpadvits/PROJECTS/PDS/Manuscript_submission/Nphs2mut.bulkRNAseq_Pklr.switchPlot.pdf" )
+pdf(width = 8 , height = 8, file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/nphs2mut_isoformAnalysis/Nphs2mut.bulkRNAseq_Pklr.switchPlot.pdf" )
 switchPlot( exampleSwitchListAnalyzed , gene = 'Pklr', 
             condition1= "mut", condition2 = "wt" )
 dev.off()

@@ -1,6 +1,6 @@
 
 sne_nn <- readRDS("/cellfile/datapublic/flopes/All_Data_for_Tim.rds")
-saveRDS(sne_nn , file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/publication_CellGenomics2026_TimPadvitski/OldYoungArDr_Seurat.SCT.rds")
+saveRDS(sne_nn , file = "/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Single_cell/In_house/snRNA_Kif3a_FelixKoehler/Data/processed/seurat_OldYoungArDr/OldYoungArDr_Seurat.SCT.rds")
 
 
 sne_raw <- readRDS("/cellfile/datapublic/flopes/All_Data_unormalized_for_Tim.rds")
@@ -13,7 +13,7 @@ frncs_podo <- subset(sne_nn, subset =seurat_clusters=="Podo" )
 
 frncs.raws_podo <- subset(sne_i, subset =ctype=="Podo" )
 
-saveRDS(frncs_podo , file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/publication_CellGenomics2026_TimPadvitski/OldYoungArDr_Seurat_podo.raw.rds")
+saveRDS(frncs_podo , file = "/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Single_cell/In_house/snRNA_Kif3a_FelixKoehler/Data/processed/seurat_OldYoungArDr/OldYoungArDr_Seurat_podo.raw.rds")
 VlnPlot(frncs_podo, features = "nCount_RNA", group.by = "age")
 VlnPlot(frncs_podo, features = "nCount_RNA", group.by = "diet")
 VlnPlot(frncs_podo, features = "nCount_RNA", group.by = "condition")
@@ -33,7 +33,7 @@ sne_raw <- RunUMAP(sne_raw, dims = 1:50)
 FeaturePlot( sne_raw, label = T, features = "Wt1", max.cutoff = 10)
 DimPlot( sne_raw, label = T)
 frncs.raws_podoAll <- subset(sne_raw, subset =seurat_clusters==17 )
-saveRDS(frncs.raws_podoAll , file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/publication_CellGenomics2026_TimPadvitski/OldYoungArDr_Seurat_podoAll.raw.rds")
+saveRDS(frncs.raws_podoAll , file = "/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Single_cell/In_house/snRNA_Kif3a_FelixKoehler/Data/processed/seurat_OldYoungArDr/OldYoungArDr_Seurat_podoAll.raw.rds")
 
 ### read podocyte / glomerular circadfian genes
 glom.circ <- readxl::read_xlsx( "/cellfile/datapublic/tpadvits/PROJECTS/PodocytePJ/RNA_seq/Public_data/Mouse_data/glomerular_circadian_PRJEB67585/Glomerular circadian transcriptomics meta2d BHQ 0.1.xlsx")

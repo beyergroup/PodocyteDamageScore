@@ -33,6 +33,7 @@ Preprocessing of some datasets is part of the analysis scripts that use them:
 ## lib
 
 * `AUCell_script.r` - functions for the damage score calculation (`DS_calc.func`), sourced by the analysis, figure and preprocessing scripts.
+* `Universal_Damage_Signature_Tim_Paula_Version.R` - `damage_signature.func`, which builds a damage signature from a list of differential expression results (genes ranked by mean rank across studies, with the common direction of change); the version that produced `gene_sets_and_tables/podocyteDamageSignature.tsv`. Written with Paula Unger.
 
 ## Analysis_scripts
 
