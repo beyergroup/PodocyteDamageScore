@@ -1722,7 +1722,7 @@ datt <-  Reduce( rbind, lapply(seq(toPlot.list), function(ii){
   #### sn KFO ####
     
      #plot correlation between PDS and albCr
-      source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/AUCell_script.r")
+      source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
       ##  load Damage signature
       DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
       # load data

@@ -14,7 +14,7 @@ mallinfo::malloc.trim()
 gc()
 
 #### load functions
-source("/data/user/tpadvits/PROJECTS/PDS/AUCell_script.r")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
 # load the podo damage signature
 DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/DS_all.20.09.2023.tsv")
 

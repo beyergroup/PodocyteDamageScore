@@ -7,7 +7,7 @@ library(ggpubr)
 library(RColorBrewer)
 library(ggeasy)
 # F to calculate damage score
-source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/AUCell_script.r")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
 source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
 
 # release memory

@@ -930,7 +930,7 @@ dev.off()
 
 #### calculate and plot PDS ####
   {
-    source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/AUCell_script.r")
+    source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
     
     ##  load Damage signature
     DS_all <- read.table( header = T, "/home/tim_nevelsk/PROJECTS/PODOCYTE/DiseaseScore/Development_Validation/CrossValidation/platforms/DamageSignatures/DS_all.02.06.2022.tsv")

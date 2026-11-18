@@ -34,7 +34,7 @@ setwd("/home/tim_nevelsk/PROJECTS/PODOCYTE/WRITING/PDS_manuscript/Figures/Figure
 inputdir <-  "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/figures/Figure_input" 
 
 # load necessary code
-source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/cell-damage-score/AUCell_script.r")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
 source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
 
 # load damage signatures
