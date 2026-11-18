@@ -256,7 +256,7 @@ library(gwasrapidd)
       #### create extended ranges for all podo genes ####
       {
         ## all sc/snRNA-seq podocyte expressed genes
-        allPodoGenes <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/SCSN_allPodoGenes.rda")
+        allPodoGenes <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
         library(gprofiler2)
         PDSuniverse.h <- gorth(
           query   = allPodoGenes,

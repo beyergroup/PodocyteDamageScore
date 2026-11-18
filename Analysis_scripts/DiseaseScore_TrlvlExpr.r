@@ -2,7 +2,7 @@
 #### viz.  expression of ind. genes in single-cell podocyte datasets ####
 ## load data 
   listSCSN.1K.sampl <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN_samples.1K.22.12.23.rda")
-  allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+  allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
   
 ### one gene 
   Ggene <- "Dpp4"

@@ -15,12 +15,12 @@ library( ggpubr)
 library( DEP )
 
 source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/usefulRfunc.r")
-source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/SharedFunctions.R")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")  # DS_calc.func (was Paula's SharedFunctions.R URL, now 404)
 
 ### load kegg paths
 keggPath_pathlist <- readRDS( "/media/tim_nevelsk/WD_tim/ANNOTATIONS/Pathways/kegg_pathsList_gName.07.09.23.rda")
 # podocyte genes
-allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 
 
 #### process proteomics data ####
@@ -642,7 +642,7 @@ podoGlom_proteome_filt <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_dam
 #### apply PDS to proteomics ####
 MtoH <- read.table( header = T, "/home/tim_nevelsk/PROJECTS/PODOCYTE/WRITING/PDS_manuscript/DSpodo_musTOhomo_oneTOone.tsv")
 
-DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 DS_all$gene_symbol <- MtoH$Mouse_Symbol
 DS_all.PROT <- DS_all
 DS_all.PROT$gene_symbol <- toupper(DS_all.PROT$gene_symbol)

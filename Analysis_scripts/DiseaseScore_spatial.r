@@ -19,7 +19,7 @@ gc()
 PodoMarks.mouse <-  c( "Wt1", "Nphs1", "Nphs2", "Synpo","Robo2","Thsd7a","Nebl","Ptpro","Magi2","Podxl")
 
 # podocyte damage signature
-DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 # convert gene names to human orthologs
 DS.HOMO <-  fun_homoTO.FROMmouse( gns = DS_all$gene_symbol, TO = F)
 DS_all.HOMO <-  DS_all
@@ -106,7 +106,7 @@ saveRDS(mm.kidney_sptl.dimred, file="/cellfile/DATASETS/Mouse/Kidney/Transcripto
 
 ### calculate PDS
 {
-  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
   mm.kidney_sptl.dimred <- readRDS( file="/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Spatial/Public/spatial_GSE182939/Data/GSE182939_RAW/mm.kidney_sptr.Seur_dimred.rda")
 
   
@@ -267,7 +267,7 @@ barplot(Podo.frac, main="fraction of annotated podocytes")
   
   ### calculate PDS
   {
-    DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+    DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
     kidney.AKI_sptl.dimred.mm <- readRDS( file="/cellfile/DATASETS/Mouse/Kidney/Transcriptomics/Spatial/Public/spatial_GSE182939/Data/GSE182939_RAW/mm.kidney_sptr.Seur_dimred.rda")
     
     
@@ -573,7 +573,7 @@ barplot(Podo.frac, main="fraction of annotated podocytes")
       }
       
       
-      DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+      DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
       
       # selected by authors
       seur.BTBR.podo <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/GSE190094/GSE190094_BTBR.Podocyte.seur.rda")

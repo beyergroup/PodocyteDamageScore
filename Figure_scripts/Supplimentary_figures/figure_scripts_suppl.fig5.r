@@ -6,7 +6,7 @@ library( ggplot2 )
 require( cowplot )
 
 #### load podocyte genes
-allPodoGenes <-  readRDS("PROJECTS/PDS/SCSN_allPodoGenes.rda")
+allPodoGenes <-  readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 
 
 ### load data

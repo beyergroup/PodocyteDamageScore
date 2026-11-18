@@ -27,7 +27,7 @@ setwd( "/home/tim_nevelsk/PROJECTS/PODOCYTE/WRITING/PDS_manuscript/Figures/Figur
 inputdir <-  "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/figures/Figure_input" 
 
 # load necessary code
-source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/SharedFunctions.R")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")  # DS_calc.func (was Paula's SharedFunctions.R URL, now 404)
 source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/usefulRfunc.r")  
 
 

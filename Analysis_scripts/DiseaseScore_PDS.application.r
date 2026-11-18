@@ -28,7 +28,7 @@ library( RColorBrewer )
 
 #### load functions
 # calculate damage score
- source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/SharedFunctions.R")
+ source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")  # DS_calc.func (was Paula's SharedFunctions.R URL, now 404)
  source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/func_analysis.R")  
 
 #### load data #### 
@@ -49,10 +49,10 @@ annot_tab$group <- paste( annot_tab$Genotype,annot_tab$Age_weeks,sep = "_" )
 
 ##  load Damage signature
 # DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.02.06.2022.tsv")
-DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 
 ### load all genes expressed in SCSN podocytes
-allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 allPodoGenes_mean <-  readRDS(file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes_mean.rda")
 
 ### load TFs expressed in SCSN podocytes

@@ -387,7 +387,7 @@ tx2gene <- getBM( attributes=c('ensembl_gene_id', 'external_gene_name',"refseq_m
     {
       older <- FSGSexpr11[[1]][,c(1,2,6,9,10,11 )]
       ### load sc, analysis in GSE146912_scAnalysis.r script
-      scDR<- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/GSE146912/scRNAseq_GSE146912_DEtab.rda")
+      scDR<- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/GSE146912/scaled_norm/scRNAseq_GSE146912_DEtab.rda")
       sc_deDF <- scDR[[1]][,colnames(scDR[[1]])[c(F, T)]]
       ### load MA
       FSGS_MA_DE <-  readRDS("/home/tim_nevelsk/PROJECTS/PODOCYTE/DiseaseScore/DATA/MA_lfcRank.rda")
@@ -435,7 +435,7 @@ tx2gene <- getBM( attributes=c('ensembl_gene_id', 'external_gene_name',"refseq_m
       older_rank <- apply(older_rank, 2, rank, na.last="keep")
       
       ### load sc, analysis in GSE146912_scAnalysis.r script
-      scDR<- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/GSE146912/scRNAseq_GSE146912_DEtab.rda")
+      scDR<- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/GSE146912/scaled_norm/scRNAseq_GSE146912_DEtab.rda")
       sc_deDF <- scDR[[1]][,colnames(scDR[[1]])[c(F, T)]]
       sc_rankDF <- scDR[[2]][,colnames(scDR[[2]])[c(F, T)]]
       sc_rankDF <- apply(sc_rankDF, 2, rank, na.last="keep") 

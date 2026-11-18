@@ -23,13 +23,14 @@ tx2gene <- biomaRt::getBM(attributes=c( "ensembl_gene_id", "external_gene_name",
 
 #### load functions
 # generate damage signature
-source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/SharedFunctions.R")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")  # DS_calc.func (was Paula's SharedFunctions.R URL, now 404)
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/Universal_Damage_Signature_Tim_Paula_Version.R")  # damage_signature.func (version that made the published signature)
 # calculate damage score
 source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/usefulRfunc.r")
 
-DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 
-allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 
 ### load subsampled sc data
 listSCSN.1K.sampl <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.DataPrep/listSCSN_samples.1K.22.12.23.rda")
@@ -70,7 +71,7 @@ triangle_vec_to_matrix <- function(vec,
 #### load the data ####
     
       # genes expressed in sc.sn
-      scsnRNAseq_mean.rank <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/scsnRNAseq.podo_gene.inter_mean.rank.rda")
+      scsnRNAseq_mean.rank <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DE/scsnRNAseq.podo_gene.inter_mean.rank.rda")
       
       ### load DE results
       FSGS_MA_DE <- readRDS(  file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DE/MA_DElist.04.04.22.rda")
@@ -165,7 +166,7 @@ triangle_vec_to_matrix <- function(vec,
                                              thresh = 0.75, geneFilter = SCSNpodogenes )
         
         # use genes within top 2000 mean rank of expr. in sc.sn podocytes
-        scsnRNAseq_mean.rank <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/scsnRNAseq.podo_gene.inter_mean.rank.rda")
+        scsnRNAseq_mean.rank <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DE/scsnRNAseq.podo_gene.inter_mean.rank.rda")
         DS_all.2K <- damage_signature.func( DE_list , thresh = 0.75, 
                                             geneFilter = names(scsnRNAseq_mean.rank[1:2000]  ))
         
@@ -1253,7 +1254,7 @@ triangle_vec_to_matrix <- function(vec,
 
 #### cross-validate damage types #### 
 annotations <- readRDS(file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/PDS_validation_mouse/explist_44.ma.bulk.sc_annot.rda")
-DS_all<- read.table(header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all<- read.table(header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 explist <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/PDS_validation_mouse/explist_44.ma.bulk.scPbulk.rda")
 XX <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/preprocessing/PDS_validation_mouse/explist_44.ma.bulk.sc.rda")
 names(explist) <- names(XX)
@@ -1724,7 +1725,7 @@ datt <-  Reduce( rbind, lapply(seq(toPlot.list), function(ii){
      #plot correlation between PDS and albCr
       source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
       ##  load Damage signature
-      DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+      DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
       # load data
         listPodo <- c("/cellfile/PROJECTS/podocyte_snRNAseq_models/snrnaseq_processing_TimPadvitski/Output/11_Nphs2mut/from_WD/Seurat/decontX.allcells.scDblFind_Seur_podo.rda",
                       "/cellfile/PROJECTS/podocyte_snRNAseq_models/snrnaseq_processing_TimPadvitski/Output/10_Wt1hetdel/from_WD/Seurat/decontX.allcells.scDblFind_Seur_podo.rda",
@@ -2380,8 +2381,8 @@ datt <-  Reduce( rbind, lapply(seq(toPlot.list), function(ii){
 
 #### charachterisation of PDS signature genes ####
   {
-    DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
-    allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+    DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
+    allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
     
     ### top 42 markers
     DS_all.42 <- DS_all[ 1:42, ]
@@ -2793,7 +2794,7 @@ datt <-  Reduce( rbind, lapply(seq(toPlot.list), function(ii){
                                             function(X) X$scsn.Rank )))
       names(scsnRNAseq_mean.rank)<-allPodoGenes.inter
       scsnRNAseq_mean.rank <- scsnRNAseq_mean.rank[order(scsnRNAseq_mean.rank)]
-      saveRDS(scsnRNAseq_mean.rank, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/00_legacy_unassigned/from_F/PODOCYTE_nonWD/DiseaseScore/scsnRNAseq.podo_gene.inter_mean.rank.rda")
+      saveRDS(scsnRNAseq_mean.rank, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DE/scsnRNAseq.podo_gene.inter_mean.rank.rda")
       
       # prepare for plot
       scsnRNAseq_means.melt <- Reduce( rbind, scsnRNAseq_means)

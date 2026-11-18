@@ -28,7 +28,7 @@ source("/cellfile/datapublic/tpadvits/PROJECTS/utility.SCRIPTS/usefulRfunc.r")
   tx2gene_human <- getBM(attributes=c('ensembl_gene_id', 'external_gene_name',"entrezgene_id"),  mart = ensembl_human)
 
   # load damage signatures
-  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+  DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
   # convert gene names to human orthologs
   DS.HOMO <-  fun_homoTO.FROMmouse( gns = DS_all$gene_symbol, TO = F)
   DS_all.HOMO <-  DS_all

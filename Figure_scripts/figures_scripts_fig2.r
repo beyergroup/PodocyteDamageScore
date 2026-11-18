@@ -29,18 +29,18 @@ setwd("/home/tim_nevelsk/PROJECTS/PODOCYTE/WRITING/PDS_manuscript/Figures/Figure
 inputdir <-  "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/figures/Figure_input" 
 
 # load necessary code
-source("https://raw.githubusercontent.com/PauUng/HepatocyteDamageScore/master/SharedFunctions.R")
+source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")  # DS_calc.func (was Paula's SharedFunctions.R URL, now 404)
 source("https://raw.githubusercontent.com/nevelsk90/R_scripts/master/usefulRfunc.r")  
 
 
 # load damage signatures
-DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T,  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 # convert gene names to human orthologs
 DS.HOMO <-  fun_homoTO.FROMmouse( gns = DS_all$gene_symbol, TO = F )
 DS_all.HOMO <-  DS_all
 DS_all.HOMO$HOMO <- unlist(DS.HOMO$HOMO)
 # load scsn podo genes
-allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 
 #### 1. panel A. functional validation with mouse data #### 
 ### PDS vs Proteinura in KFO snRNAseq datasets

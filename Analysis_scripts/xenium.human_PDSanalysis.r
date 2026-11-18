@@ -16,7 +16,7 @@ gc()
 #### load functions
 source("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/lib/AUCell_script.r")
 # load the podo damage signature
-DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 
                
 
@@ -551,7 +551,7 @@ glom.annot.l <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage
 good_molecules.agg.list <-  readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/xenium.human_PDSanalysis/Glom_analysis/PDS/good_molecules.agg.list.RDS")
 
 DSpodo_musTOhomo_oneTOone <- read.table(header = T, "PROJECTS/PDS/DSpodo_musTOhomo_oneTOone.tsv")
-DS_all <- read.table(header = T, "PROJECTS/PDS/DS_all.20.09.2023.tsv")
+DS_all <- read.table(header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 DS_all$Hgenes <- DSpodo_musTOhomo_oneTOone$Human_Symbol[ match( DS_all$gene_symbol , DSpodo_musTOhomo_oneTOone$Mouse_Symbol)]
 
 

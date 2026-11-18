@@ -75,14 +75,14 @@ ATACseq_tgenesM <- ATACseq_tgenesM[ rowSums(ATACseq_tgenesM)>0 , colSums(ATACseq
 PodoPathGSet <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/reference_tables/PodoPathGSet.05.01.24.7plus.rda")
 
 # podocyte exprsd genes
-allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/SCSN_allPodoGenes.rda")
+allPodoGenes <- readRDS( file="/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/SCSN_allPodoGenes.rda")
 
 # all podo genes based on bulk
 podoGenesFACS <- readRDS("/home/tim_nevelsk/PROJECTS/PODOCYTE/RNAseq/wtPodo_bulkRNAseq/bulkRNAseq_podo_ExInt.rda")
 podoGenesFACS <- podoGenesFACS$gene[rowMeans(podoGenesFACS[,1:3])>10]
 
 ## 
-DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_Dev/DamageSignatures/DS_all.20.09.2023.tsv")
+DS_all <- read.table( header = T, "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Code/gene_sets_and_tables/podocyteDamageSignature.tsv")
 
 
 #### analyse bulk circadian RNAseq ####  
