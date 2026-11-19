@@ -61,14 +61,14 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
 ### load the prior
   # ATACseq_tgenesM.TFtc <- readRDS( file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/TFreg/ATACseq_TFtc.tgenesM_77.TF.rda")
   # ATACseq_tgenesM <- readRDS( file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/TFreg/ATACseq_tgenesM.rda")
-  ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_ATACseq/Podocytes/TOBIAS/FIMO/atac.podo_tobias.fimo110TF.p5e4_TFtc.rda")
+  ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_footprints/TOBIAS/FIMO/atac.podo_tobias.fimo110TF.p5e4_TFtc.rda")
   ATACseq_tgenes.S <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "score" ))
   ATACseq_tgenes.Q <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "qvalue" ))
   colnames(ATACseq_tgenes.S) <- colnames(ATACseq_tgenes.Q) <- names(ATACseq_tgenes)
   ATACseq_tgenesM <- ATACseq_tgenes.S * ( ATACseq_tgenes.Q <0.1)
   rownames(ATACseq_tgenesM) <- rownames(ATACseq_tgenes[[1]])
   ATACseq_tgenesM <- ATACseq_tgenesM[ rowSums(ATACseq_tgenesM)>0 , colSums(ATACseq_tgenesM)>0  ]
-  # ATACseq_tgenesFiltNames <- read.table( sep = "\t", file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_MiraldiGRN/MiraldiStyle_Tim/inputs/geneLists/mouseTFprior_podoExprsd.tsv")
+  # ATACseq_tgenesFiltNames <- read.table( sep = "\t", file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/99_TRNprior_v1/mouseTFprior_podoExprsd.tsv")
   ## filter TFprior based on expression
   # ATACseq_tgenesM.podo <- ATACseq_tgenesM[ ,  colnames(ATACseq_tgenesM)%in% TF_MeanMed ]
   # ATACseq_tgenesM.podo <- ATACseq_tgenesM.podo[ rowSums(ATACseq_tgenesM.podo)>0 , colSums(ATACseq_tgenesM.podo)>0  ]
@@ -78,7 +78,7 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
   TFmouse_all <- unique( TFmouse_MAT$TF_Name)
   
 ### Wt1 targets
-  WT1chipTgenes <- read.table( sep="\t","/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_GRN/ATACseq_GRNprior/Tgenes/Podo_chipWt1_TFtc.csv")
+  WT1chipTgenes <- read.table( sep="\t","/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/99_TRNprior_v1/Podo_chipWt1_TFtc.csv")
 
   
 #### calculate and plot correlation of genes with PDS ####
@@ -308,7 +308,7 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
     
     ### save a table with extra info
     # readTF clustering info
-    mouseTFmm.podo_clust <- yaml::read_yaml("/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_ATACseq/Podocytes/TOBIAS/motif_clusters/motif_comparison_seqcor0.3_clusters.yml")
+    mouseTFmm.podo_clust <- yaml::read_yaml("/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/99_TRNprior_v1/motif_comparison_seqcor0.3_clusters.yml")
     names(mouseTFmm.podo_clust) <-sapply(seq(mouseTFmm.podo_clust), 
                                          function(ii)  paste( gsub( ".*__| ", "", mouseTFmm.podo_clust[[ii]]), collapse=":") )
     mouseTFmm.podo_clust <- setNames( rep(names(mouseTFmm.podo_clust), lengths(mouseTFmm.podo_clust)),
@@ -321,7 +321,7 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
     cclust_names <-  mouseTFmm.podo_clust[ match( 
       colnames(TFreg) , sub( " ", "",names(mouseTFmm.podo_clust)) ) ] 
     TFreg_clust <- t( rowsum( t(TFreg), group=cclust_names) )
-    saveRDS( TFreg_clust , file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_ATACseq/atac.podo_tobias_fimo_tftc.0.01.GRN.PWMclust.rda")
+    saveRDS( TFreg_clust , file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_prior/atac.podo_tobias_fimo_tftc.0.01.GRN.PWMclust.rda")
     
     # vectorise TF-target gene list
     TFregVec <- Reduce( c, apply( TFreg, 1, function(X)
@@ -2730,9 +2730,9 @@ TF_MeanMed <- readRDS(  file="/cellfile/PROJECTS/damage_scores/podocyte_damage_s
   
   ### ATACseq based GRN
     {
-    # ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_ATACseq/atac.podo_hint_fimo.77TF_GRN.rda")
-      ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_ATACseq/atac.podo_tobias_fimo_tftc.0.01.GRN.PWMclust.rda")
-      ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_ATACseq/atac.podo_tobias_fimo_tftc.0.1.GRN.PWMclust.rda")
+    # ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_prior/atac.podo_hint_fimo.77TF_GRN.rda")
+      ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/99_TRNprior_v1/atac.podo_tobias_fimo_tftc.0.01.GRN.PWMclust.rda")
+      ATACseq_hint.fimo_tftc.GRN <-   readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/99_TRNprior_v1/atac.podo_tobias_fimo_tftc.0.1.GRN.PWMclust.rda")
       
       ATACseq_tgenesM.podo <- ATACseq_hint.fimo_tftc.GRN[ 
       rownames(ATACseq_hint.fimo_tftc.GRN) %in% allPodoGenes, ]

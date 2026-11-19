@@ -310,14 +310,14 @@ circ.genes.bulk0.01 <- readRDS("/cellfile/PROJECTS/damage_scores/podocyte_damage
 PodoPathGSet_plus <- c(PodoPathGSet , circ.genes.bulk0.01=list(circ.genes.bulk0.01 ))
 ### load the prior
 # ## Wt1 and Tead1 Chipseq targets
-WT1wt2014_TFtc <- readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_Chipseq/Chipseq.WT1wt2014_TFtc.rda")
+WT1wt2014_TFtc <- readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ChIPseq_analysis/Chipseq.WT1wt2014_TFtc.rda")
 WT1wt2014_TFtc.sig <- WT1wt2014_TFtc$score * ( WT1wt2014_TFtc$qvalue <0.3)
-Tead1wt2018_TFtc <- readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_Chipseq/Chipseq.Tead1wt2018_TFtc.rda")
+Tead1wt2018_TFtc <- readRDS( file="/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ChIPseq_analysis/Chipseq.Tead1wt2018_TFtc.rda")
 Tead1wt2018_TFtc.sig <-  Tead1wt2018_TFtc$score * ( Tead1wt2018_TFtc$qvalue <0.3)
 ## ATACseq prior
 # ATACseq_tgenesM.TFtc <- readRDS( file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/TFreg/ATACseq_TFtc.tgenesM_77.TF.rda")
 # ATACseq_tgenesM <- readRDS( file = "/cellfile/PROJECTS/damage_scores/podocyte_damage_score_TimPadvitski/Output/DiseaseScore_PDS.application/TFreg/ATACseq_tgenesM.rda")
-ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_ATACseq/Podocytes/TOBIAS/FIMO/atac.podo_tobias.fimo110TF.cut1.p5e4_TFtc.rda")
+ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_footprints/TOBIAS/FIMO/atac.podo_tobias.fimo110TF.cut1.p5e4_TFtc.rda")
 ATACseq_tgenes.S <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "score" ))
 ATACseq_tgenes.Q <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "qvalue" ))
 colnames(ATACseq_tgenes.S) <- colnames(ATACseq_tgenes.Q) <- names(ATACseq_tgenes)
@@ -498,7 +498,7 @@ ATACseq_tgenesM.podo <- ATACseq_tgenesM[ rownames( ATACseq_tgenesM ) %in% allPod
 
 ### Suppl. fig motif enrichment of geneSet promoters
   { 
-  mmotifs <- universalmotif::read_meme( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_ATACseq/Podocytes/TOBIAS/motif_clusters/motif_comparison_seqcor_Ward.cut.1_consensus_motifs.meme" )
+  mmotifs <- universalmotif::read_meme( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_footprints/TOBIAS/motif_clusters/motif_comparison_seqcor_Ward.cut.1_consensus_motifs.meme" )
   # mmotifs <- universalmotif::read_meme( "/media/tim_nevelsk/WD_tim/ANNOTATIONS/CISBP/CISBP2mouse_podoTF_08.01.24.meme" )
     
     names(mmotifs) <- sapply(seq(mmotifs) , function(ii) mmotifs[[ii]]@name )

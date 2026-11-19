@@ -63,7 +63,7 @@ listSCSN.1K.sampl <- readRDS( "/cellfile/PROJECTS/damage_scores/podocyte_damage_
 
 
 # load GRN
-ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/00_legacy_unassigned/WD_nonWD_ATACseq/atac.podo_tobias.fimo77TF.p5e4_TFtc.rda")
+ATACseq_tgenes <- readRDS( "/cellfile/PROJECTS/podocyte_wt1_trn/trn_inference_TimPadvitski/Output/ATACseq_prior/atac.podo_tobias.fimo77TF.p5e4_TFtc.rda")
 ATACseq_tgenes.S <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "score" ))
 ATACseq_tgenes.Q <- Reduce( cbind , lapply( ATACseq_tgenes , "[[", "qvalue" ))
 colnames(ATACseq_tgenes.S) <- colnames(ATACseq_tgenes.Q) <- names(ATACseq_tgenes)
